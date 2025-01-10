@@ -53,9 +53,43 @@ class Walker {
     this.y = Math.max(0, Math.min(this.height - 1, this.y));
   }
 
+  setMouseX() {
+    document.addEventListener("mousemove", (event) => {
+      this.x = event.clientX;
+      // this.y = event.clientY;
+    });
+  }
+
+  setMouseY() {
+    document.addEventListener("mousemove", (event) => {
+      // this.x = event.clientX;
+      this.y = event.clientY;
+    });
+  }
+
+  dynamicStep() {
+    const random = Math.random();
+
+    document.addEventListener("mousemove", (event) => {
+      if (random < 0.5 && this.x < event.clientX) {
+        return this.x++;
+      }
+      if (random < 0.5 && this.x > event.clientX) {
+        return this.x--;
+      }
+
+      if (random < 1 && this.y < event.clientY) {
+        return this.y++;
+      }
+      if (random < 1 && this.x > event.clientY) {
+        return this.y--;
+      }
+    });
+  }
+
   show(ctx: CanvasRenderingContext2D) {
     ctx.fillStyle = "pink";
-    ctx.fillRect(this.x, this.y, 1, 1);
+    ctx.fillRect(this.x, this.y, 5, 5);
   }
 }
 
@@ -74,7 +108,18 @@ class RandomWalkerApp extends CanvasApp {
     this.walker.step();
     this.walker.show(this.ctx);
   }
+
+  biasedAnimate() {
+    this.walker.biasedStep();
+    this.walker.show(this.ctx);
+  }
+
+  dynamicAnimate() {
+    this.walker.dynamicStep();
+    this.walker.step();
+    this.walker.show(this.ctx);
+  }
 }
 
 const app = new RandomWalkerApp("canvas");
-// app.start(() => app.animate());
+app.start(() => app.dynamicAnimate());
