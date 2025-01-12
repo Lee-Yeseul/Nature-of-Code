@@ -1,4 +1,5 @@
 import CanvasApp from "../common/CanvasApp";
+import { gaussianRandomWithParams } from "../common/gaussianRandom";
 
 class Walker {
   x: number;
@@ -88,8 +89,8 @@ class Walker {
   }
 
   show(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = "pink";
-    ctx.fillRect(this.x, this.y, 5, 5);
+    ctx.fillStyle = "rgba(255, 192, 203, 0.2)"; // 핑크색, 50% 투명도
+    ctx.fillRect(this.x, this.y, 10, 10);
   }
 }
 
@@ -119,7 +120,13 @@ class RandomWalkerApp extends CanvasApp {
     this.walker.step();
     this.walker.show(this.ctx);
   }
+
+  gaussianAnimate() {
+    let x = gaussianRandomWithParams(320, 60);
+    this.walker.x = x;
+    this.walker.show(this.ctx);
+  }
 }
 
 const app = new RandomWalkerApp("canvas");
-app.start(() => app.dynamicAnimate());
+app.start(() => app.gaussianAnimate());

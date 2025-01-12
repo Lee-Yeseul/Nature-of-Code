@@ -49,3 +49,22 @@ Create a random walker that has a greater tendency to move down and to the right
 3. Probability
 
 - 확률이란 특정 사건(Event)이 발생할 가능성을 측정한 값
+
+### A Normal Distribution of Random Numbers
+
+- 비균일 난수를 만드는 다른 방법 중 하나는 정규분포를 이용하는 것이다. (정규분포가 클수록 고르게 분포)
+- ex. 랜덤하게 사람의 키를 구하는 함수를 만든다고 할 떄 가장 많은 값에서 가장 많은 결과가 나와야 하므로 정규분포를 이용하는 것이 더 적합하다.
+- cf. [Javascript로 Gaussian Number 함수 구현하기](./01-01.GaussianRandom.md)
+- ex4. Consider a simulation of paint splatter drawn as a collection of colored dots. Most of the paint clusters around a central position, but some dots splatter out toward the edges. Can you use a normal distribution of random numbers to generate the positions of the dots? Can you also use a normal distribution of random numbers to generate a color palette? Try creating a slider to adjust the standard deviation.
+
+### A Custom Distribution of Random Numbers
+
+- 균일 분포 난수나 가우시안 분포가 아닌 난수 구하는 법
+- 랜덤 워커는 이전에 방문한 위치로 여러 번 돌아가는데 이걸 oversampling이라고 한다. 이는 비효율적임
+  이를 피하기 위한 전략 중 하나는 가끔 매우 큰 걸음을 내딛는 것이다. 이를 통해 워커는 특정 위치 주변을 무작위로 탐색하면서 주기적으로 멀리 점프하여 oversampling을 피할 수 있다.
+  Levy flight라고 알려진 무작위 워크의 이러한 변형에는 사용자 정의 확률 집합이 필요하다.
+- 수락 거부 알고리즘
+
+### A Smoother Approach with Perlin Noise
+
+- 좋은 난수 생성기는 서로 관련이 없고 식별 가능한 패턴을 보이지 않는 숫자를 생성하낟. 그러나 유기적인 행동을 프로그래밍할 때 균일한 무작위성은 자연스럽지 않을 수 있다. Perlin noise 알고리즘은 자연스럽게 정렬된 의사난수 시퀀스를 생성한다. 시퀀스의 각 숫자는 이전 숫자와 값이 매우 가깝다. 이를 통해 난수 사이에 부드러운 전환이 이루어지고 순수한 노이즈보다 유기적인 모양이 나타난다.
