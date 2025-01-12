@@ -128,5 +128,5 @@ class RandomWalkerApp extends CanvasApp {
   }
 }
 
-const app = new RandomWalkerApp("canvas");
-app.start(() => app.gaussianAnimate());
+// const app = new RandomWalkerApp("canvas");
+// app.start(() => app.gaussianAnimate());
