@@ -117,10 +117,10 @@ app.canvas.addEventListener("mousemove", (event: MouseEvent) => {
   lastMouseMoveTime = Date.now(); // 마지막 마우스 움직임 시간 업데이트
 });
 
-app.start(() => {
-  const currentTime = Date.now();
-  const mouseActive = currentTime - lastMouseMoveTime < MOUSE_IDLE_TIME;
+// app.start(() => {
+//   const currentTime = Date.now();
+//   const mouseActive = currentTime - lastMouseMoveTime < MOUSE_IDLE_TIME;
 
-  mover.update(mouseX, mouseY, mouseActive);
-  mover.show(app.ctx);
-});
+//   mover.update(mouseX, mouseY, mouseActive);
+//   mover.show(app.ctx);
+// });
